@@ -8,7 +8,6 @@ public class Main {
 
         System.out.println("If you would like to convert from an RGB triplet to a hexadecimal, enter 'RGB'.");
         System.out.println("If you would like to convert from a hexadecimal to an RGB triplet, enter 'hex'.");
-        System.out.println("If you would like to convert from a color name, enter 'color'.");
 
         Scanner input = new Scanner(System.in);
         String convert = input.next();
@@ -24,7 +23,14 @@ public class Main {
             System.out.println("Enter your 'b' number");
             int bNum = rgbInput.nextInt();
 
-            ColorConverter.rgbToHex(rNum, gNum, bNum);
+            if(rNum < 0 || rNum > 255 || gNum < 0 || gNum > 255 || bNum < 0 || bNum > 255)
+            {
+                System.out.println("RGB triplet number can't be less than 0 or greater than 255.");
+            }
+            else
+            {
+                ColorConverter.rgbToHex(rNum, gNum, bNum);
+            }
         }
         else if (convert.equalsIgnoreCase("hex"))
         {
@@ -33,11 +39,18 @@ public class Main {
             System.out.println("Input the hexidecimal string in the form 'ffffff'");
             String hex = hexInput.next();
 
-            ColorConverter.hexToRGB(hex);
+            if(hex.length() > 6)
+            {
+                System.out.println("Invalid hexidecimal input.");
+            }
+            else
+            {
+                ColorConverter.hexToRGB(hex);
+            }
         }
-        else if (convert.equalsIgnoreCase("color"))
+        else
         {
-            //ColorConverter.color();
+            System.out.println("Invalid input");
         }
     }
 }

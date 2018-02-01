@@ -1,15 +1,24 @@
 package com.company;
 
-public class ColorConverter {
+class ColorConverter {
 
-    public static String rChar, rChar2, gChar, gChar2, bChar, bChar2, hexEquivalent;
-    public static int rVal, rRem, gVal, gRem, bVal, bRem;
+    private static String rChar;
+    private static String rChar2;
+    private static String gChar;
+    private static String gChar2;
+    private static String bChar;
+    private static String bChar2;
+    private static int rVal, rRem, gVal, gRem, bVal, bRem;
 
-    public static char r1, r2, g1, g2, b1, b2;
-    public static int r1Num, r2Num, g1Num, g2Num, b1Num, b2Num, rTotal, gTotal, bTotal;
-    public static String RGBEquivalent;
+    private static char r1, r2, g1, g2, b1, b2;
+    private static int r1Num;
+    private static int r2Num;
+    private static int g1Num;
+    private static int g2Num;
+    private static int b1Num;
+    private static int b2Num;
 
-    public static void rgbToHex(int r, int g, int b)
+    static void rgbToHex(int r, int g, int b)
     {
         rVal = r/16;
         rRem = r%16;
@@ -19,11 +28,11 @@ public class ColorConverter {
         bRem = b%16;
 
         convertRGB();
-        hexEquivalent = rChar + rChar2 + gChar + gChar2 + bChar + bChar2;
+        String hexEquivalent = rChar + rChar2 + gChar + gChar2 + bChar + bChar2;
         System.out.println("The hexadecimal equivalent of your input is: " + hexEquivalent);
     }
 
-    public static void hexToRGB(String x)
+    static void hexToRGB(String x)
     {
         x = x.toUpperCase();
         char [] xx = x.toCharArray();
@@ -36,14 +45,14 @@ public class ColorConverter {
 
         convertHEX();
 
-        rTotal = r1Num + r2Num;
-        gTotal = g1Num + g2Num;
-        bTotal = b1Num + b2Num;
-        RGBEquivalent = "(" + rTotal + ", " + gTotal + ", " + bTotal + ")";
+        int rTotal = r1Num + r2Num;
+        int gTotal = g1Num + g2Num;
+        int bTotal = b1Num + b2Num;
+        String RGBEquivalent = "(" + rTotal + ", " + gTotal + ", " + bTotal + ")";
         System.out.println("The RGB triplet equivalent of your input is: " + RGBEquivalent);
     }
 
-    public static void convertHEX()
+    private static void convertHEX()
     {
         for(int j = 10; j < 20; j++)
         {
@@ -113,7 +122,7 @@ public class ColorConverter {
         }
     }
 
-    public static void convertRGB()
+    private static void convertRGB()
     {
         for(int j = 10; j < 16; j++)
         {
